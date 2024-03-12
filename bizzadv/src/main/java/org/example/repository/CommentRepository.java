@@ -1,7 +1,9 @@
 package org.example.repository;
 
-import org.springframework.stereotype.Repository;
 
-@Repository
+import org.example.entity.Comment;
+
 public interface CommentRepository {
+    void storeComment(Comment comment);
+
 }

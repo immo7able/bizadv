@@ -1,7 +1,8 @@
 package org.example.repository;
 
-import org.springframework.stereotype.Repository;
 
-@Repository
+import org.example.entity.User;
+
 public interface UserRepository {
+    void storeUser(User user);
 }

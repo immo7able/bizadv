@@ -1,5 +1,8 @@
 package org.example.repository;
-import org.springframework.stereotype.Repository;
-@Repository
+
+
+import org.example.entity.Anime;
+
 public interface AnimeRepository {
+    void storeAnime(Anime anime);
 }
