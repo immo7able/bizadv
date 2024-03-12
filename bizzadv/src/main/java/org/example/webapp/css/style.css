@@ -4,6 +4,145 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
+.form-signup {
+	background-color: #fff;
+	padding: 40px;
+	border-radius: 10px;
+	margin: 20px auto;
+	max-width: 600px;
+}
+
+.form-signup h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-signup .row {
+	margin-bottom: 10px;
+
+}
+
+.form-signup .col-md-6 {
+	padding: 0 10px;
+}
+
+.form-signup input[type="text"] {
+	border: 1px solid #E4E4E4;
+	outline-color:#d8232a;
+	width: 96%;
+	font-size:0.8125em;
+	padding:10px;
+	--webkit-appearance: none;
+}
+
+.form-signup input[type="submit"] {
+	background: #d8232a;
+	color: #FFF;
+	font-size:1em;
+	padding:7px 10px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+	margin-top: 20px;
+}
+
+.form-signup input[type="submit"]:hover{
+	background:#000;
+}
+
+a.forgot {
+	font-size: 0.85em;
+	color: #000;
+}
+
+.bd{
+	background-image: url('https://kartinki.pics/uploads/posts/2021-07/1627135437_5-kartinkin-com-p-anime-piksel-fon-anime-krasivo-7.png');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.form-signup a.register {
+	text-align: center;
+	display: block;
+	margin-top: 10px;
+}
+
+form.form-signup .form-control .input-field {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.profile {
+	background-color: #f5f5f5;
+	border-top: 5px;
+	padding: 35px;
+	margin:  auto;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile .avatar img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+}
+
+.profile .info {
+	margin-left: 120px;
+}
+
+.profile .stats {
+	margin-top: 20px;
+	list-style: none;
+	padding: 0;
+}
+
+.profile .stats li {
+	display: inline-block;
+	margin-right: 20px;
+	color: #007bff;
+}
+
+.manga-list {
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+}
+
+.manga-list h2 {
+	margin-bottom: 10px;
+}
+
+.image-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+	grid-gap: 10px;
+	margin: 20px auto;
+}
+
+.image-container img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
 .redBtn{
 	display: inline-block;
 	padding: 10px 20px;
