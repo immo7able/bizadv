@@ -15,11 +15,11 @@ public class Anime {
     private int date;
 
     public int getId() {
-        return id;
+        return anime_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.anime_id = id;
     }
 
     public String getName() {

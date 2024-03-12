@@ -9,5 +9,8 @@
         <module name="bizzadv" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bizzadv (1)" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
