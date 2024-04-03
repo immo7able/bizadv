@@ -13,9 +13,4 @@
       <module name="bizzadv (1)" target="11" />
     </bytecodeTargetLevel>
   </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="bizzadv" options="-parameters" />
-    </option>
-  </component>
 </project>
