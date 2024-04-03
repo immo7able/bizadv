@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb71849d-c169-4eab-b7c5-c325374edbe2" name="Changes" comment="new project">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/ProjectConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/bizarreadventure/BizarreAdventureApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/entity/Anime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/entity/Genre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/AnimeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/AnimeRepositoryPostgre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/CommentRepositoryPostgre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/repository/UserRepositoryPostgre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/service/AnimeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/service/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/Thumbs.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/banner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/banner1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/banner2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/f_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/f_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/img_sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/p1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic1 (2).jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/pic9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/rating.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/rating1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/star.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/images/tick1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/js/jquery-1.11.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/js/jquery.flexisel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/js/responsiveslides.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/java/org/example/webapp/single.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bizzadv/src/test/java/org/example/bizarreadventure/BizarreAdventureApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2dDPcvxKoQL0mZlCjh0vE1azkIO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.BizarreAdventureApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "A:/bizadv/bizadv",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "A:/bizzadv/bizzadv/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BizarreAdventureApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="bizzadv" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.bizarreadventure.BizarreAdventureApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-868cef46" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb71849d-c169-4eab-b7c5-c325374edbe2" name="Changes" comment="" />
+      <created>1709539760086</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709539760086</updated>
+      <workItem from="1709539761144" duration="3101000" />
+      <workItem from="1709627916732" duration="165000" />
+      <workItem from="1710229719595" duration="1420000" />
+      <workItem from="1710231313958" duration="137000" />
+      <workItem from="1710231552729" duration="178000" />
+      <workItem from="1710231759278" duration="588000" />
+      <workItem from="1712159849975" duration="5572000" />
+      <workItem from="1712170168434" duration="21000" />
+    </task>
+    <task id="LOCAL-00001" summary="добавил поля, геттеры и сеттеры">
+      <option name="closed" value="true" />
+      <created>1710231437582</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710231437582</updated>
+    </task>
+    <task id="LOCAL-00002" summary="добавил поля, геттеры и сеттеры">
+      <option name="closed" value="true" />
+      <created>1710232324427</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710232324427</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new project">
+      <option name="closed" value="true" />
+      <created>1712162673526</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712162673526</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="добавил поля, геттеры и сеттеры" />
+    <MESSAGE value="new project" />
+    <option name="LAST_COMMIT_MESSAGE" value="new project" />
+  </component>
+</project>
