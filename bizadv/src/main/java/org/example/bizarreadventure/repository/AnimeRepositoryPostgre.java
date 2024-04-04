@@ -1,7 +1,7 @@
-package org.example.repository;
+package org.example.bizarreadventure.repository;
 
-import org.example.entity.Anime;
 import org.springframework.stereotype.Repository;
+import org.example.bizarreadventure.entity.Anime;
 
 @Repository
 public class AnimeRepositoryPostgre implements AnimeRepository{

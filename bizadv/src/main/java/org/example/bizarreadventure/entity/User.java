@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.bizarreadventure.entity;
 
 public class User {
     private int user_id;

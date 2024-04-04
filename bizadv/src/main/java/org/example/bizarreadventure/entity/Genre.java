@@ -1,4 +1,4 @@
-package org.example.entity;
+package org.example.bizarreadventure.entity;
 
 public class Genre{
     private int genre_id;
