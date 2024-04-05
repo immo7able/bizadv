@@ -41,22 +41,7 @@
 <body>
 <div class="container">
 	<div class="container_wrap">
-		<div class="header_top">
-		    <div class="col-sm-3 logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
-		    <div class="col-sm-6 nav">
-				<ul>
-					<li></li>
-					
-				  </ul>
-				 </div>
-				 <div class="col-sm-3 header_right">
-					<ul class="header_right_box">
-					<li><p><a href="login.html">Login</a></p></li>
-					<li><p><a href="register.html">Registration</a></p></li>
-					</ul>
-			</div>
-			<div class="clearfix"> </div>
-	      </div>
+		<header th:insert="blocks/header :: header"></header>
 	   <div class="content">
       	   <div class="movie_top">
       	         <div class="col-md-9 movie_box">
@@ -108,7 +93,8 @@
 								<button class="redBtn" id="prevVideo">Предыдущая серия</button><button class="redBtn" id="nextVideo">Следующая серия</button>
 							</div>
 														
-						</div>						<form method="post" action="contact-post.html">
+						</div>
+					 	<form method="post" action="contact-post">
 							<div class="text">
 			                   <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
 			                </div>

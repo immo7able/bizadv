@@ -14,29 +14,14 @@
     <script src="js/responsiveslides.min.js"></script>
 </head>
 <body>
-  <div class="header_top">
-		<div class="col-sm-3 logo"><a href="index.html"><img src="images/f_logo.jpg" alt=""/></a></div>
-		<div class="col-sm-6 nav">
-		  <ul>
-			 <li></li>
-			 
-		 </ul>
-		</div>
-		<div class="col-sm-3 header_right">
-		   <ul class="header_right_box">
-			 <li><p><a href="login.html">Login</a></p></li>
-			 <li><p><a href="register.html">Registration</a></p></li>
-		   </ul>
-		</div>
-		<div class="clearfix"> </div>
-	  </div>
+    <header th:insert="blocks/header :: header"></header>
     <main>
         <section class="profile">
           <div class="avatar">
             <img src="images/pic11.jpg" alt="Аватар пользователя">
           </div>
           <div class="info">
-            <h2>?</h2>
+            <h2 th:text="${user.login}"></h2>
             <p>Уровень ?? | Ранг # Не определен</p>
           </div>
           <div class="stats">
@@ -55,16 +40,16 @@
           <ul>
             <li>
               <div class="image-container">
-                <a href="single.html"><img src="images/pic1 (2).jpg" alt="Фото 1"></a>
-                <a href="single.html"><img src="images/pic2.jpg" alt="Фото 2"></a>
-                <a href="single.html"><img src="images/pic3.jpg" alt="Фото 3"></a>
-                <a href="single.html"><img src="images/pic4.jpg" alt="Фото 4"></a>
-                <a href="single.html"><img src="images/pic5.jpg" alt="Фото 5"></a>
-                <a href="single.html"><img src="images/pic6.jpg" alt="Фото 6"></a>
-                <a href="single.html"><img src="images/pic7.jpg" alt="Фото 7"></a>
-                <a href="single.html"><img src="images/pic8.jpg" alt="Фото 8"></a>
-                <a href="single.html"><img src="images/pic9.jpg" alt="Фото 9"></a>
-                <a href="single.html"><img src="images/pic10.jpg" alt="Фото 10"></a>
+                <a href="single"><img src="images/pic1 (2).jpg" alt="Фото 1"></a>
+                <a href="single"><img src="images/pic2.jpg" alt="Фото 2"></a>
+                <a href="single"><img src="images/pic3.jpg" alt="Фото 3"></a>
+                <a href="single"><img src="images/pic4.jpg" alt="Фото 4"></a>
+                <a href="single"><img src="images/pic5.jpg" alt="Фото 5"></a>
+                <a href="single"><img src="images/pic6.jpg" alt="Фото 6"></a>
+                <a href="single"><img src="images/pic7.jpg" alt="Фото 7"></a>
+                <a href="single"><img src="images/pic8.jpg" alt="Фото 8"></a>
+                <a href="single"><img src="images/pic9.jpg" alt="Фото 9"></a>
+                <a href="single"><img src="images/pic10.jpg" alt="Фото 10"></a>
                </div>
             </li>
             </ul>

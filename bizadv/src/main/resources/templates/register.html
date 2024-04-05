@@ -13,61 +13,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="header_top">
-		<div class="col-sm-3 logo"><a href="index.html"><img src="images/f_logo.jpg" alt=""/></a></div>
-		<div class="col-sm-6 nav">
-		  <ul>
-			 <li></li>
-			 
-		 </ul>
-		</div>
-		<div class="col-sm-3 header_right">
-		   <ul class="header_right_box">
-			 <li><p><a href="login.html">Login</a></p></li>
-			 <li><p><a href="register.html">Registration</a></p></li>
-		   </ul>
-		</div>
-		<div class="clearfix"> </div>
-	  </div>
+	<header th:insert="blocks/header :: header"></header>
 	<div class="bd">
 	<div class="container">
 		<div class="container_wrap">
 	      <div>
       	     <div class="register">
-		  	  <div action="" method="post" class="form-signup">
+		  	  <form action="/register" method="post" class="form-signup">
 				<h2 class="text-center">Регистрация</h2>
 				<div class="register-top-grid">
-					
-				<div class="row">
-					<label for="username">Логин:</label>
-					<input type="text" name="username" id="username" class="form-control">
+					<div class="row">
+						<label for="login">Логин:</label>
+						<input type="text" name="login" id="login" class="form-control">
+						<span th:if="${errors}" th:text="${errors[login]}" class="error"> </span>
+					</div>
+					<div class="row">
+						<label for="email">Email Address:</label>
+						<input type="email" name="email" id="email" class="form-control">
+						<span th:if="${errors}" th:text="${errors[email]}" class="error"></span>
+					</div>
+					<div class="row">
+						<label for="password">Пароль:</label>
+						<input type="password" name="password" id="password" class="form-control">
+						<span th:if="${errors}" th:text="${errors[password]}" class="error"></span>
+					</div>
+					<div class="row">
+						<label for="confirm_password">Подтверждение пароля:</label>
+						<input type="password" name="confirm_password" id="confirm_password" class="form-control">
+						<span th:if="${errors}" th:text="${errors[password]}" class="error"></span>
+					</div>
 				</div>
-				<div class="row">
-					<label for="name">First Name:</label>
-					<input type="text" name="name" id="name" class="form-control">
-				   </div>
-				   <div class="row">
-					<label for="lastname">Last Name:</label>
-					<input type="text" name="lastname" id="lastname" class="form-control">
-				   </div>
-				   <div class="row">
-					 <label for="email">Email Address:</label>
-					 <input type="email" name="email" id="email" class="form-control"> 
-				   </div>
-	
-				<div class="row">
-					<label for="password">Пароль:</label>
-					<input type="password" name="password" id="password" class="form-control">
-				</div>
-	
-			
-				<div>
-					<label for="confirm_password">Подтверждение пароля:</label>
-					<input type="password" name="confirm_password" id="confirm_password" class="form-control">
-				</div>
-			</div>
-			<input type="submit" value="Create Account">
-       		</div>
+				<input type="submit" value="Create Account">
 			</form>
 			</div>
 		</div>

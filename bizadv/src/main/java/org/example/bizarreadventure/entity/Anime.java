@@ -1,5 +1,7 @@
 package org.example.bizarreadventure.entity;
 
+import java.util.Date;
+
 public class Anime {
     private int anime_id;
     private String name;
@@ -12,15 +14,7 @@ public class Anime {
     private String background;
     private double rating;
     private int views;
-    private int date;
-
-    public int getId() {
-        return anime_id;
-    }
-
-    public void setId(int id) {
-        this.anime_id = id;
-    }
+    private Date outdate;
 
     public String getName() {
         return name;
@@ -102,11 +96,19 @@ public class Anime {
         this.views = views;
     }
 
-    public int getDate() {
-        return date;
+    public int getAnime_id() {
+        return anime_id;
     }
 
-    public void setDate(int date) {
-        this.date = date;
+    public void setAnime_id(int anime_id) {
+        this.anime_id = anime_id;
+    }
+
+    public Date getOutdate() {
+        return outdate;
+    }
+
+    public void setOutdate(Date outdate) {
+        this.outdate = outdate;
     }
 }

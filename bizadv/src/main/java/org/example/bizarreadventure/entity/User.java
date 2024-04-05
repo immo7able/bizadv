@@ -1,12 +1,21 @@
 package org.example.bizarreadventure.entity;
 
+import jakarta.persistence.*;
+
+import java.util.Date;
+
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int user_id;
     private String login;
     private String password;
     private String email;
     private String ranking;
-    private int dateOfReg;
+    private Date reg_date;
+    private String role;
 
     public int getUser_id() {
         return user_id;
@@ -48,11 +57,19 @@ public class User {
         this.ranking = ranking;
     }
 
-    public int getDateOfReg() {
-        return dateOfReg;
+    public Date getReg_date() {
+        return reg_date;
     }
 
-    public void setDateOfReg(int dateOfReg) {
-        this.dateOfReg = dateOfReg;
+    public void setReg_date(Date reg_date) {
+        this.reg_date = reg_date;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
