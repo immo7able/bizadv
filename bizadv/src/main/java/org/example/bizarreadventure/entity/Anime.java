@@ -1,15 +1,20 @@
 package org.example.bizarreadventure.entity;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.util.Date;
+@Entity
+@Table(name="anime")
 public class Anime {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int anime_id;
     private String name;
-    private int seriesCount;
+    private int seriescount;
     private String status;
     private String studio;
-    private String typeOfAnime;
-    private String sourceOfAnime;
+    private String typeofanime;
+    private String sourceofanime;
     private String avatar;
     private String background;
     private double rating;
@@ -25,11 +30,11 @@ public class Anime {
     }
 
     public int getSeriesCount() {
-        return seriesCount;
+        return seriescount;
     }
 
-    public void setSeriesCount(int seriesCount) {
-        this.seriesCount = seriesCount;
+    public void setSeriesCount(int seriescount) {
+        this.seriescount = seriescount;
     }
 
     public String getStatus() {
@@ -49,19 +54,19 @@ public class Anime {
     }
 
     public String getTypeOfAnime() {
-        return typeOfAnime;
+        return typeofanime;
     }
 
-    public void setTypeOfAnime(String typeOfAnime) {
-        this.typeOfAnime = typeOfAnime;
+    public void setTypeOfAnime(String typeofanime) {
+        this.typeofanime = typeofanime;
     }
 
     public String getSourceOfAnime() {
-        return sourceOfAnime;
+        return sourceofanime;
     }
 
-    public void setSourceOfAnime(String sourceOfAnime) {
-        this.sourceOfAnime = sourceOfAnime;
+    public void setSourceOfAnime(String sourceofanime) {
+        this.sourceofanime = sourceofanime;
     }
 
     public String getAvatar() {
