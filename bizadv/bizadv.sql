@@ -5,7 +5,7 @@
 -- Dumped from database version 16.1
 -- Dumped by pg_dump version 16.1
 
--- Started on 2024-04-05 20:03:43
+-- Started on 2024-04-08 14:47:42
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -39,7 +39,7 @@ CREATE TABLE public.anime (
     background character varying(50),
     rating double precision,
     views integer,
-    outdate date
+    outdate timestamp with time zone
 );
 
 
@@ -324,6 +324,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: anime; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.anime VALUES (9, 'name', 5, 'ongoing', 'studio', 'ona', 'source', 'cf94dd28-c01b-4f11-bca4-bc11dcce65cd.pic1.jpg', '6bda0822-0ba9-41a8-88d7-051ec629ae1f.banner2.jpg', 0, 0, '2024-04-08 00:51:28.9+06');
+INSERT INTO public.anime VALUES (10, 'name2', 5, 'completed', 'studio', 'special', 'source', '1b2a5b6c-023c-4c4d-9bad-32a9317ef1a8.pic4.jpg', '3b3c9109-1e08-403c-b838-421bce9ab52d.banner2.jpg', 0, 0, '2024-04-08 00:54:54.211+06');
+INSERT INTO public.anime VALUES (11, 'name3', 10, 'completed', 'studio', 'ona', 'source', '208668e8-166b-453c-9095-15802d1925d7.pic8.jpg', 'a49105c2-a45e-445f-8eee-7b9f08936cc6.banner2.jpg', 0, 0, '2024-04-08 03:12:24.554+06');
 
 
 --
@@ -364,7 +367,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users VALUES (26, 'aha1', '123456', 'ahmad@mail.ru', NULL, '2024-04-05 04:44:12.814+06', 'user');
+INSERT INTO public.users VALUES (27, 'meow', '123456', 'abuallaban2002@bk.ru', NULL, '2024-04-07 00:52:30.269+06', 'user');
+INSERT INTO public.users VALUES (26, 'aha1', '123456', 'ahmad@mail.ru', NULL, '2024-04-05 04:44:12.814+06', 'admin');
+INSERT INTO public.users VALUES (28, 'aisana200250@gmail.com', 'aisana12345', 'aisana200250@gmail.com', NULL, '2024-04-07 02:10:30.57+06', 'user');
 
 
 --
@@ -373,7 +378,7 @@ INSERT INTO public.users VALUES (26, 'aha1', '123456', 'ahmad@mail.ru', NULL, '2
 -- Name: anime_anime_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.anime_anime_id_seq', 1, false);
+SELECT pg_catalog.setval('public.anime_anime_id_seq', 11, true);
 
 
 --
@@ -409,7 +414,7 @@ SELECT pg_catalog.setval('public.genres_genre_id_seq', 1, false);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 26, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 28, true);
 
 
 --
@@ -538,7 +543,7 @@ ALTER TABLE ONLY public.userlist
     ADD CONSTRAINT userslist_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
 
 
--- Completed on 2024-04-05 20:03:43
+-- Completed on 2024-04-08 14:47:42
 
 --
 -- PostgreSQL database dump complete
