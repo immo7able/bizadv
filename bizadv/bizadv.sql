@@ -5,7 +5,7 @@
 -- Dumped from database version 16.1
 -- Dumped by pg_dump version 16.1
 
--- Started on 2024-04-08 14:47:42
+-- Started on 2024-04-09 03:36:00
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -62,7 +62,7 @@ CREATE SEQUENCE public.anime_anime_id_seq
 ALTER SEQUENCE public.anime_anime_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4845 (class 0 OID 0)
+-- TOC entry 4856 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: anime_anime_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -102,7 +102,7 @@ CREATE SEQUENCE public.animecomments_animecomment_id_seq
 ALTER SEQUENCE public.animecomments_animecomment_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4846 (class 0 OID 0)
+-- TOC entry 4857 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: animecomments_animecomment_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -141,12 +141,52 @@ CREATE SEQUENCE public.animegenres_animegenre_id_seq
 ALTER SEQUENCE public.animegenres_animegenre_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4847 (class 0 OID 0)
+-- TOC entry 4858 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: animegenres_animegenre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.animegenres_animegenre_id_seq OWNED BY public.animegenre.animegenre_id;
+
+
+--
+-- TOC entry 228 (class 1259 OID 32816)
+-- Name: animeseries; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.animeseries (
+    animeseries_id integer NOT NULL,
+    animeid integer,
+    number integer NOT NULL,
+    video character varying(100) NOT NULL
+);
+
+
+ALTER TABLE public.animeseries OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 32815)
+-- Name: animeseries_animeseries_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.animeseries_animeseries_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.animeseries_animeseries_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 4859 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: animeseries_animeseries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.animeseries_animeseries_id_seq OWNED BY public.animeseries.animeseries_id;
 
 
 --
@@ -179,7 +219,7 @@ CREATE SEQUENCE public.genres_genre_id_seq
 ALTER SEQUENCE public.genres_genre_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4848 (class 0 OID 0)
+-- TOC entry 4860 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: genres_genre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -237,7 +277,7 @@ CREATE SEQUENCE public.users_user_id_seq
 ALTER SEQUENCE public.users_user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4849 (class 0 OID 0)
+-- TOC entry 4861 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -262,7 +302,7 @@ CREATE SEQUENCE public.userslist_userlist_id_seq
 ALTER SEQUENCE public.userslist_userlist_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4850 (class 0 OID 0)
+-- TOC entry 4862 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: userslist_userlist_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -271,7 +311,7 @@ ALTER SEQUENCE public.userslist_userlist_id_seq OWNED BY public.userlist.userlis
 
 
 --
--- TOC entry 4659 (class 2604 OID 24639)
+-- TOC entry 4664 (class 2604 OID 24639)
 -- Name: anime anime_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -279,7 +319,7 @@ ALTER TABLE ONLY public.anime ALTER COLUMN anime_id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4660 (class 2604 OID 24640)
+-- TOC entry 4665 (class 2604 OID 24640)
 -- Name: animecomment animecomment_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -287,7 +327,7 @@ ALTER TABLE ONLY public.animecomment ALTER COLUMN animecomment_id SET DEFAULT ne
 
 
 --
--- TOC entry 4661 (class 2604 OID 24641)
+-- TOC entry 4666 (class 2604 OID 24641)
 -- Name: animegenre animegenre_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -295,7 +335,15 @@ ALTER TABLE ONLY public.animegenre ALTER COLUMN animegenre_id SET DEFAULT nextva
 
 
 --
--- TOC entry 4662 (class 2604 OID 24642)
+-- TOC entry 4670 (class 2604 OID 32819)
+-- Name: animeseries animeseries_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.animeseries ALTER COLUMN animeseries_id SET DEFAULT nextval('public.animeseries_animeseries_id_seq'::regclass);
+
+
+--
+-- TOC entry 4667 (class 2604 OID 24642)
 -- Name: genre genre_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -303,7 +351,7 @@ ALTER TABLE ONLY public.genre ALTER COLUMN genre_id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4664 (class 2604 OID 24644)
+-- TOC entry 4669 (class 2604 OID 24644)
 -- Name: userlist userlist_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -311,7 +359,7 @@ ALTER TABLE ONLY public.userlist ALTER COLUMN userlist_id SET DEFAULT nextval('p
 
 
 --
--- TOC entry 4663 (class 2604 OID 24643)
+-- TOC entry 4668 (class 2604 OID 24643)
 -- Name: users user_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -319,70 +367,101 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 
 --
--- TOC entry 4828 (class 0 OID 24615)
+-- TOC entry 4837 (class 0 OID 24615)
 -- Dependencies: 215
 -- Data for Name: anime; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.anime VALUES (9, 'name', 5, 'ongoing', 'studio', 'ona', 'source', 'cf94dd28-c01b-4f11-bca4-bc11dcce65cd.pic1.jpg', '6bda0822-0ba9-41a8-88d7-051ec629ae1f.banner2.jpg', 0, 0, '2024-04-08 00:51:28.9+06');
-INSERT INTO public.anime VALUES (10, 'name2', 5, 'completed', 'studio', 'special', 'source', '1b2a5b6c-023c-4c4d-9bad-32a9317ef1a8.pic4.jpg', '3b3c9109-1e08-403c-b838-421bce9ab52d.banner2.jpg', 0, 0, '2024-04-08 00:54:54.211+06');
-INSERT INTO public.anime VALUES (11, 'name3', 10, 'completed', 'studio', 'ona', 'source', '208668e8-166b-453c-9095-15802d1925d7.pic8.jpg', 'a49105c2-a45e-445f-8eee-7b9f08936cc6.banner2.jpg', 0, 0, '2024-04-08 03:12:24.554+06');
+COPY public.anime (anime_id, name, seriescount, status, studio, typeofanime, sourceofanime, avatar, background, rating, views, outdate) FROM stdin;
+9	name	5	ongoing	studio	ona	source	cf94dd28-c01b-4f11-bca4-bc11dcce65cd.pic1.jpg	6bda0822-0ba9-41a8-88d7-051ec629ae1f.banner2.jpg	0	0	2024-04-08 00:51:28.9+06
+10	name2	5	completed	studio	special	source	1b2a5b6c-023c-4c4d-9bad-32a9317ef1a8.pic4.jpg	3b3c9109-1e08-403c-b838-421bce9ab52d.banner2.jpg	0	0	2024-04-08 00:54:54.211+06
+11	name3	10	completed	studio	ona	source	208668e8-166b-453c-9095-15802d1925d7.pic8.jpg	a49105c2-a45e-445f-8eee-7b9f08936cc6.banner2.jpg	0	0	2024-04-08 03:12:24.554+06
+12	name4	3	completed	studio	ova	source	192d2a52-1e68-49bd-aeb2-8657c9bead2a.pic6.jpg	3c7d1ed0-8067-4f0c-bae3-5526afe1ff91.banner2.jpg	0	0	2024-04-09 04:21:30.616+06
+\.
 
 
 --
--- TOC entry 4830 (class 0 OID 24619)
+-- TOC entry 4839 (class 0 OID 24619)
 -- Dependencies: 217
 -- Data for Name: animecomment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY public.animecomment (animecomment_id, user_id, anime_id, comment) FROM stdin;
+\.
 
 
 --
--- TOC entry 4832 (class 0 OID 24623)
+-- TOC entry 4841 (class 0 OID 24623)
 -- Dependencies: 219
 -- Data for Name: animegenre; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY public.animegenre (animegenre_id, genre_id, anime_id) FROM stdin;
+\.
 
 
 --
--- TOC entry 4834 (class 0 OID 24627)
+-- TOC entry 4850 (class 0 OID 32816)
+-- Dependencies: 228
+-- Data for Name: animeseries; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.animeseries (animeseries_id, animeid, number, video) FROM stdin;
+7	9	3	9/3.mp4
+8	9	1	9/1.mp4
+9	9	2	9/2.mp4
+10	9	4	9/4.mp4
+12	11	1	11/1.mp4
+13	10	1	10/1.mp4
+14	10	2	10/2.mp4
+15	12	1	12/1.mp4
+\.
+
+
+--
+-- TOC entry 4843 (class 0 OID 24627)
 -- Dependencies: 221
 -- Data for Name: genre; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY public.genre (genre_id, name) FROM stdin;
+\.
 
 
 --
--- TOC entry 4838 (class 0 OID 24635)
+-- TOC entry 4847 (class 0 OID 24635)
 -- Dependencies: 225
 -- Data for Name: userlist; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY public.userlist (userlist_id, user_id, anime_id, listtype) FROM stdin;
+\.
 
 
 --
--- TOC entry 4836 (class 0 OID 24631)
+-- TOC entry 4845 (class 0 OID 24631)
 -- Dependencies: 223
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users VALUES (27, 'meow', '123456', 'abuallaban2002@bk.ru', NULL, '2024-04-07 00:52:30.269+06', 'user');
-INSERT INTO public.users VALUES (26, 'aha1', '123456', 'ahmad@mail.ru', NULL, '2024-04-05 04:44:12.814+06', 'admin');
-INSERT INTO public.users VALUES (28, 'aisana200250@gmail.com', 'aisana12345', 'aisana200250@gmail.com', NULL, '2024-04-07 02:10:30.57+06', 'user');
+COPY public.users (user_id, login, password, email, ranking, reg_date, role) FROM stdin;
+27	meow	123456	abuallaban2002@bk.ru	\N	2024-04-07 00:52:30.269+06	user
+26	aha1	123456	ahmad@mail.ru	\N	2024-04-05 04:44:12.814+06	admin
+28	aisana200250@gmail.com	aisana12345	aisana200250@gmail.com	\N	2024-04-07 02:10:30.57+06	user
+\.
 
 
 --
--- TOC entry 4851 (class 0 OID 0)
+-- TOC entry 4863 (class 0 OID 0)
 -- Dependencies: 216
 -- Name: anime_anime_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.anime_anime_id_seq', 11, true);
+SELECT pg_catalog.setval('public.anime_anime_id_seq', 12, true);
 
 
 --
--- TOC entry 4852 (class 0 OID 0)
+-- TOC entry 4864 (class 0 OID 0)
 -- Dependencies: 218
 -- Name: animecomments_animecomment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -391,7 +470,7 @@ SELECT pg_catalog.setval('public.animecomments_animecomment_id_seq', 1, false);
 
 
 --
--- TOC entry 4853 (class 0 OID 0)
+-- TOC entry 4865 (class 0 OID 0)
 -- Dependencies: 220
 -- Name: animegenres_animegenre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -400,7 +479,16 @@ SELECT pg_catalog.setval('public.animegenres_animegenre_id_seq', 1, false);
 
 
 --
--- TOC entry 4854 (class 0 OID 0)
+-- TOC entry 4866 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: animeseries_animeseries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.animeseries_animeseries_id_seq', 15, true);
+
+
+--
+-- TOC entry 4867 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: genres_genre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -409,7 +497,7 @@ SELECT pg_catalog.setval('public.genres_genre_id_seq', 1, false);
 
 
 --
--- TOC entry 4855 (class 0 OID 0)
+-- TOC entry 4868 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -418,7 +506,7 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 28, true);
 
 
 --
--- TOC entry 4856 (class 0 OID 0)
+-- TOC entry 4869 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: userslist_userlist_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -427,7 +515,7 @@ SELECT pg_catalog.setval('public.userslist_userlist_id_seq', 1, false);
 
 
 --
--- TOC entry 4666 (class 2606 OID 24646)
+-- TOC entry 4672 (class 2606 OID 24646)
 -- Name: anime anime_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -436,7 +524,7 @@ ALTER TABLE ONLY public.anime
 
 
 --
--- TOC entry 4668 (class 2606 OID 24648)
+-- TOC entry 4674 (class 2606 OID 24648)
 -- Name: animecomment animecomments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -445,7 +533,7 @@ ALTER TABLE ONLY public.animecomment
 
 
 --
--- TOC entry 4670 (class 2606 OID 24650)
+-- TOC entry 4676 (class 2606 OID 24650)
 -- Name: animegenre animegenres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -454,7 +542,16 @@ ALTER TABLE ONLY public.animegenre
 
 
 --
--- TOC entry 4672 (class 2606 OID 24652)
+-- TOC entry 4686 (class 2606 OID 32821)
+-- Name: animeseries animeseries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.animeseries
+    ADD CONSTRAINT animeseries_pkey PRIMARY KEY (animeseries_id);
+
+
+--
+-- TOC entry 4678 (class 2606 OID 24652)
 -- Name: genre genres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -463,7 +560,7 @@ ALTER TABLE ONLY public.genre
 
 
 --
--- TOC entry 4674 (class 2606 OID 24654)
+-- TOC entry 4680 (class 2606 OID 24654)
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -472,7 +569,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4676 (class 2606 OID 24656)
+-- TOC entry 4682 (class 2606 OID 24656)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -481,7 +578,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4678 (class 2606 OID 24658)
+-- TOC entry 4684 (class 2606 OID 24658)
 -- Name: userlist userslist_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -490,7 +587,7 @@ ALTER TABLE ONLY public.userlist
 
 
 --
--- TOC entry 4679 (class 2606 OID 24659)
+-- TOC entry 4687 (class 2606 OID 24659)
 -- Name: animecomment animecomments_anime_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -499,7 +596,7 @@ ALTER TABLE ONLY public.animecomment
 
 
 --
--- TOC entry 4680 (class 2606 OID 24664)
+-- TOC entry 4688 (class 2606 OID 24664)
 -- Name: animecomment animecomments_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -508,7 +605,7 @@ ALTER TABLE ONLY public.animecomment
 
 
 --
--- TOC entry 4681 (class 2606 OID 24669)
+-- TOC entry 4689 (class 2606 OID 24669)
 -- Name: animegenre animegenres_anime_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -517,7 +614,7 @@ ALTER TABLE ONLY public.animegenre
 
 
 --
--- TOC entry 4682 (class 2606 OID 24674)
+-- TOC entry 4690 (class 2606 OID 24674)
 -- Name: animegenre animegenres_genre_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -526,7 +623,16 @@ ALTER TABLE ONLY public.animegenre
 
 
 --
--- TOC entry 4683 (class 2606 OID 24679)
+-- TOC entry 4693 (class 2606 OID 32822)
+-- Name: animeseries animeseries_anime_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.animeseries
+    ADD CONSTRAINT animeseries_anime_id_fkey FOREIGN KEY (animeid) REFERENCES public.anime(anime_id);
+
+
+--
+-- TOC entry 4691 (class 2606 OID 24679)
 -- Name: userlist userslist_anime_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -535,7 +641,7 @@ ALTER TABLE ONLY public.userlist
 
 
 --
--- TOC entry 4684 (class 2606 OID 24684)
+-- TOC entry 4692 (class 2606 OID 24684)
 -- Name: userlist userslist_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -543,7 +649,7 @@ ALTER TABLE ONLY public.userlist
     ADD CONSTRAINT userslist_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
 
 
--- Completed on 2024-04-08 14:47:42
+-- Completed on 2024-04-09 03:36:00
 
 --
 -- PostgreSQL database dump complete
