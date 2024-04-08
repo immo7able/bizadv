@@ -1,7 +1,9 @@
 package org.example.bizarreadventure.service;
 
 import org.example.bizarreadventure.entity.Anime;
+import org.example.bizarreadventure.entity.AnimeSeries;
 import org.example.bizarreadventure.repository.AnimeRepository;
+import org.example.bizarreadventure.repository.AnimeSeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import java.util.regex.Pattern;
 public class AnimeService {
     @Autowired
     private AnimeRepository animeRepository;
+    @Autowired
+    private AnimeSeriesRepository animeSeriesRepository;
     @Value("${upload.path}")
     private String uploadPath;
     private static final Pattern ALLOWED_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z0-9.@_]+$");
@@ -82,6 +86,37 @@ public class AnimeService {
         }
         return errors;
     }
+    public Map<String, String> addAnimeSerie(int id,
+                                                 int number,
+                                                 MultipartFile video) throws IOException {
+        Map<String, String> errors = new HashMap<>();
+        if(number<=0){
+            errors.put("number","Недопустимое число");
+        }
+        if(id<=0){
+            errors.put("id","Недопустимое число");
+        }
+        if ((video == null) || video.getOriginalFilename().isEmpty()) {
+            errors.put("video", "Видео пустое");
+        }
+        if(animeSeriesRepository.existsByNumberAndAnimeid(number, id)){
+            errors.put("number", "Данная серия уже добавлена");
+        }
+        if (errors.isEmpty()) {
+            AnimeSeries animeSeries = new AnimeSeries();
+            File uploadDir = new File(uploadPath+"/"+id);
+            if(!uploadDir.exists()){
+                uploadDir.mkdirs();
+            }
+            String resultVideoName = id+"/"+number+"."+video.getContentType().split("/")[1];
+            video.transferTo(new File(uploadPath+"/"+resultVideoName));
+            animeSeries.setAnimeid(id);
+            animeSeries.setNumber(number);
+            animeSeries.setVideo(resultVideoName);
+            animeSeriesRepository.save(animeSeries);
+        }
+        return errors;
+    }
     private boolean isAllowedCharacters(String input) {
         return ALLOWED_CHARACTERS_PATTERN.matcher(input).matches();
     }
@@ -93,5 +128,8 @@ public class AnimeService {
     }
     public List<Anime> getAnime(){
         return animeRepository.findAll();
+    }
+    public List<AnimeSeries> getAllSeries(int anime_id){
+        return animeSeriesRepository.findAllByAnimeidOrderByNumber(anime_id);
     }
 }

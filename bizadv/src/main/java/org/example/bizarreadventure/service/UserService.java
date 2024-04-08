@@ -59,8 +59,10 @@ public class UserService {
         return ALLOWED_CHARACTERS_PATTERN.matcher(input).matches();
     }
     public boolean authenticate(String login, String password) {
-        User user = userRepository.findByLogin(login);
-        return login != null && !login.isEmpty() && password != null && !password.isEmpty() && user.getPassword().equals(password);
+        if(userRepository.existsByLogin(login)){
+            User user = userRepository.findByLogin(login);
+            return login != null && !login.isEmpty() && password != null && !password.isEmpty() && user.getPassword().equals(password);
+        }else return false;
     }
     public User getUser(String login){
         return userRepository.findByLogin(login);

@@ -32,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<label for="password">Пароль:</label>
 					<input type="password" name="password" id="password" class="form-control input-field" required>
 				  </div>
-				
-				  <a class="acount-btn" href="register">Создать аккаунт</a>
+					<span th:if="${error}" th:text="${error}" class="error"></span>
+				  <a class="acount-btn" href="/register">Создать аккаунт</a>
 				  <input type="submit" value="Войти">
 				</form>
         </div>
