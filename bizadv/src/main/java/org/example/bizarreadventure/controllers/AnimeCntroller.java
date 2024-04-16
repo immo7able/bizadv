@@ -1,7 +1,9 @@
 package org.example.bizarreadventure.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import org.example.bizarreadventure.entity.Anime;
 import org.example.bizarreadventure.entity.AnimeSeries;
+import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.service.AnimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,9 +32,10 @@ public class AnimeCntroller {
         return "anime";
     }
     @GetMapping("/anime/{id}")
-    public String getAnimePageDetails(@PathVariable(value = "id") int id, Model model){
+    public String getAnimePageDetails(@PathVariable(value = "id") int id, Model model, HttpSession httpSession){
         Anime anime = new Anime();
         List<AnimeSeries> animeSeries = new ArrayList<>();
+        User user = (User) httpSession.getAttribute("user");
         if(animeService.isAnimeExists(id)){
             animeSeries=animeService.getAllSeries(id);
             if(!animeSeries.isEmpty()){
@@ -40,7 +43,7 @@ public class AnimeCntroller {
             }
             anime = animeService.getOneAnime(id);
             model.addAttribute("anime", anime);
-
+            model.addAttribute("user", user);
             return "single";
         }
         else return "redirect:/index";

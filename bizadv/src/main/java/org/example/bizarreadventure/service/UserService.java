@@ -1,5 +1,6 @@
 package org.example.bizarreadventure.service;
 
+import jakarta.transaction.Transactional;
 import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,9 @@ public class UserService {
     }
     public User getUser(String login){
         return userRepository.findByLogin(login);
+    }
+    @Transactional
+    public void addFavorite(){
+
     }
 }
