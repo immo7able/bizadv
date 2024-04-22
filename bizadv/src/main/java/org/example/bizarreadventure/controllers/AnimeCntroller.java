@@ -3,8 +3,10 @@ package org.example.bizarreadventure.controllers;
 import jakarta.servlet.http.HttpSession;
 import org.example.bizarreadventure.entity.Anime;
 import org.example.bizarreadventure.entity.AnimeSeries;
+import org.example.bizarreadventure.entity.CommentDTO;
 import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.service.AnimeService;
+import org.example.bizarreadventure.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ import java.util.Map;
 public class AnimeCntroller {
     @Autowired
     private AnimeService animeService;
+    @Autowired
+    private CommentService commentService;
     @GetMapping("/anime")
     public String getAnimePage(Model model){
         List<Anime> animeList = new ArrayList<>();
@@ -32,21 +36,24 @@ public class AnimeCntroller {
         return "anime";
     }
     @GetMapping("/anime/{id}")
-    public String getAnimePageDetails(@PathVariable(value = "id") int id, Model model, HttpSession httpSession){
+    public String getAnimeDetails(@PathVariable(value = "id") int id, Model model, HttpSession httpSession) {
         Anime anime = new Anime();
         List<AnimeSeries> animeSeries = new ArrayList<>();
         User user = (User) httpSession.getAttribute("user");
-        if(animeService.isAnimeExists(id)){
-            animeSeries=animeService.getAllSeries(id);
-            if(!animeSeries.isEmpty()){
+        if (animeService.isAnimeExists(id)) {
+            animeSeries = animeService.getAllSeries(id);
+            if (!animeSeries.isEmpty()) {
                 model.addAttribute("animeseries", animeSeries);
             }
             anime = animeService.getOneAnime(id);
             model.addAttribute("anime", anime);
             model.addAttribute("user", user);
+            List<CommentDTO> comments = commentService.getCommentsByAnimeId(id);
+            model.addAttribute("comments", comments);
             return "single";
+        } else {
+            return "redirect:/index";
         }
-        else return "redirect:/index";
     }
     @PostMapping("/anime/{id}")
     public String addAnimeSeries(@PathVariable(value = "id") int id, @RequestParam int number, @RequestParam MultipartFile video, Model model) throws IOException {
