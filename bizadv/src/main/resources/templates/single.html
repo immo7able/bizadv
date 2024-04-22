@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<title>Bizarre Adventure</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<title>Bizarre Adventure</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<!-- start plugins -->
+	<!-- start plugins -->
 	<script th:inline="javascript">
 		/* <![CDATA[ */
 		function changeVideoSrc(button) {
@@ -52,220 +52,171 @@
 			}
 		}
 	</script>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 </head>
 <body th:style="'background-image: url(/uploads/' + ${anime.background} + ')'">
 <div class="container">
 	<div class="container_wrap">
 		<header th:insert="~{blocks/header :: header}"></header>
-	   <div class="content">
-      	   <div class="movie_top">
-      	         <div class="col-md-9 movie_box">
-                        <div class="grid images_3_of_2">
-                        	<div class="movie_image">
-                                <span class="movie_rating">5.0</span>
-                                <img th:src="@{${'/uploads/' + anime.avatar}}" class="img-responsive" alt=""/>
-                            </div>
-                            <div class="movie_rate">
-                            	<div class="rating_desc"><p>Your Vote :</p></div>
-                            	<form action="" class="sky-form">
-							     <fieldset>					
-								   <section>
-								     <div class="rating">
-										<input type="radio" name="stars-rating" id="stars-rating-5">
-										<label for="stars-rating-5"><i class="icon-star"></i></label>
-										<input type="radio" name="stars-rating" id="stars-rating-4">
-										<label for="stars-rating-4"><i class="icon-star"></i></label>
-										<input type="radio" name="stars-rating" id="stars-rating-3">
-										<label for="stars-rating-3"><i class="icon-star"></i></label>
-										<input type="radio" name="stars-rating" id="stars-rating-2">
-										<label for="stars-rating-2"><i class="icon-star"></i></label>
-										<input type="radio" name="stars-rating" id="stars-rating-1">
-										<label for="stars-rating-1"><i class="icon-star"></i></label>
-									 </div>
-								  </section>
-							    </fieldset>
-						  	   </form>
-						  	   <div class="clearfix"> </div>
-                            </div>
-                        </div>
-                        <div class="desc1 span_3_of_2">
-                        	<p class="movie_option"><strong>Название: </strong><a th:text="${anime.name}" href="#"></a></p>
-                        	<p class="movie_option"><strong>Количество серий: </strong><span th:text="${anime.seriesCount}"></span></p>
-                        	<p class="movie_option"><strong>Статус: </strong><a th:text="${anime.status}" href="#"></a></p>
-                        	<p class="movie_option"><strong>Студия: </strong><span th:text="${anime.studio}"></span></p>
-                        	<p class="movie_option"><strong>Тип: </strong><a th:text="${anime.typeOfAnime}" href="#"></a></p>
-                        	<p class="movie_option"><strong>Источник: </strong><a th:text="${anime.sourceOfAnime}" href="#"></a></p>
-                            <p class="movie_option"><strong>Дата выхода: </strong><span th:text="${anime.outdate}"></span></p>
-                         </div>
-                        <div class="clearfix"> </div>
-                        <p class="m_4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-						<div>
-							<div th:if="${session.user!=null}">
-								<form th:action="'/anime/'+${anime.anime_id}" method="post" class="form-signup" enctype="multipart/form-data">
-									<div class="text-center" style="color:green" th:if="${message}" th:text="${message}"></div>
-									<div>
-										<label for="number">Серия:</label>
-										<input type="number" name="number" id="number" class="form-control" value="1">
-										<span th:if="${errors}" th:text="${errors[number]}" class="error"> </span>
-									</div>
-									<div>
-										<label for="video">Video:</label>
-										<input type="file" id="video" name="video" accept="video/*">
-										<span th:if="${errors}" th:text="${errors[video]}" class="error"> </span>
-									</div>
-									<input type="submit" value="Добавление">
-								</form>
-							</div>
-							<div>
-								<form th:if="${user}" th:action="'/anime/'+${anime.anime_id}+'addFavorite'" method="post">
-									<input type="hidden" id="anime_id" name="anime_id" th:value="${anime.anime_id}">
-									<input type="hidden" id="user_id" name="user_id" th:value="${user.user_id}">
-									<input type="hidden" id="listtype" name="listtype" value="favorite">
-									<button class="redBtn" type="submit">Любимое</button>
-								</form>
-								<div style="display: inline-block;" th:if="${animeseries}" th:each="el: ${animeseries}">
-									<button th:text="${el.number}" class="redBtn" th:attr="data-video='/uploads/'+${el.video}" th:id="'button'+${el.number}" onclick="changeVideoSrc(this)"></button>
-								</div>
-								<video th:if="${animeseries}" id="videoPlayer" width="640" height="360" controls>
-									<source th:src="@{${'/uploads/' + animeseries[0].video}}" type="video/mp4">
-									Ваш браузер не поддерживает видео тег.
-								</video>
+		<div class="content">
+			<div class="movie_top">
+				<div class="col-md-9 movie_box">
+					<div class="grid images_3_of_2">
+						<div class="movie_image">
+							<span class="movie_rating">5.0</span>
+							<img th:src="@{${'/uploads/' + anime.avatar}}" class="img-responsive" alt=""/>
+						</div>
+						<div class="movie_rate">
+							<div class="rating_desc"><p>Your Vote :</p></div>
+							<form action="" class="sky-form">
+								<fieldset>
+									<section>
+										<div class="rating">
+											<input type="radio" name="stars-rating" id="stars-rating-5">
+											<label for="stars-rating-5"><i class="icon-star"></i></label>
+											<input type="radio" name="stars-rating" id="stars-rating-4">
+											<label for="stars-rating-4"><i class="icon-star"></i></label>
+											<input type="radio" name="stars-rating" id="stars-rating-3">
+											<label for="stars-rating-3"><i class="icon-star"></i></label>
+											<input type="radio" name="stars-rating" id="stars-rating-2">
+											<label for="stars-rating-2"><i class="icon-star"></i></label>
+											<input type="radio" name="stars-rating" id="stars-rating-1">
+											<label for="stars-rating-1"><i class="icon-star"></i></label>
+										</div>
+									</section>
+								</fieldset>
+							</form>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="desc1 span_3_of_2">
+						<p class="movie_option"><strong>Название: </strong><a th:text="${anime.name}" href="#"></a></p>
+						<p class="movie_option"><strong>Количество серий: </strong><span th:text="${anime.seriesCount}"></span></p>
+						<p class="movie_option"><strong>Статус: </strong><a th:text="${anime.status}" href="#"></a></p>
+						<p class="movie_option"><strong>Студия: </strong><span th:text="${anime.studio}"></span></p>
+						<p class="movie_option"><strong>Тип: </strong><a th:text="${anime.typeOfAnime}" href="#"></a></p>
+						<p class="movie_option"><strong>Источник: </strong><a th:text="${anime.sourceOfAnime}" href="#"></a></p>
+						<p class="movie_option"><strong>Дата выхода: </strong><span th:text="${anime.outdate}"></span></p>
+					</div>
+					<div class="clearfix"> </div>
+					<p class="m_4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+					<div>
+						<div th:if="${session.user!=null}">
+							<form th:action="'/anime/'+${anime.anime_id}" method="post" class="form-signup" enctype="multipart/form-data">
+								<div class="text-center" style="color:#219321" th:if="${message}" th:text="${message}"></div>
 								<div>
-									<button class="redBtn" id="prevVideo" onclick="previous()">Предыдущая серия</button>
-									<button class="redBtn" id="nextVideo" onclick="next()">Следующая серия</button>
+									<label for="number">Серия:</label>
+									<input type="number" name="number" id="number" class="form-control" value="1">
+									<span th:if="${errors}" th:text="${errors[number]}" class="error"> </span>
 								</div>
+								<div>
+									<label for="video">Video:</label>
+									<input type="file" id="video" name="video" accept="video/*">
+									<span th:if="${errors}" th:text="${errors[video]}" class="error"> </span>
+								</div>
+								<input type="submit" value="Добавление">
+							</form>
+						</div>
+						<div>
+							<div th:if="${animeseries}" th:each="el: ${animeseries}">
+								<button th:text="${el.number}" class="redBtn" th:attr="data-video='/uploads/'+${el.video}" th:id="'button'+${el.number}" onclick="changeVideoSrc(this)"></button>
+							</div>
+							<video th:if="${animeseries}" id="videoPlayer" width="640" height="360" controls>
+								<source th:src="@{${'/uploads/' + animeseries[0].video}}" type="video/mp4">
+								Ваш браузер не поддерживает видео тег.
+							</video>
+							<div>
+								<button class="redBtn" id="prevVideo" onclick="previous()">Предыдущая серия</button>
+								<button class="redBtn" id="nextVideo" onclick="next()">Следующая серия</button>
 							</div>
 						</div>
-					 	<form method="post" action="contact-post">
-							<div class="text">
-			                   <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
-			                </div>
-			                <div class="form-submit1">
-					           <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
-					        </div>
-							<div class="clearfix"></div>
-                 		</form>
-		                <div class="single">
-		                <h1>10 Comments</h1>
-		                <ul class="single_list">
-					        <li>
-					            <div class="preview"><a href="#"><img src="/images/1.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data">
-					                <div class="title">Movie  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-					         <li>
-					            <div class="preview"><a href="#"><img src="/images/1.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data">
-					                <div class="title">Wernay  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent </p>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-					         <li>
-					            <div class="preview"><a href="#"><img src="/images/1.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data">
-					                <div class="title">mr.dev  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram,</p>
-					            </div>
-					           <div class="clearfix"></div>
-					        </li>
-					     	<li class="middle">
-					            <div class="preview"><a href="#"><img src="/images/1.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data-middle">
-					                <div class="title">Wernay  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-					        <li class="last-comment">
-					            <div class="preview"><a href="#"><img src="/images/1.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data-last">
-					                <div class="title">mr.dev  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit </p>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-					         <li>
-					            <div class="preview"><a href="#"><img src="/images/.jpg" class="img-responsive" alt=""></a></div>
-					            <div class="data">
-					                <div class="title">denpro  /  2 hours ago  /  <a href="#">reply</a></div>
-					                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-			  			</ul>
-                      </div>
-                      </div>
-                      <div class="col-md-3">
-                      	<div class="movie_img"><div class="grid_2">
-							<img src="/images/pic6.jpg" class="img-responsive" alt="">
-							<div class="caption1">
-							</div>
-						    </div>
-						   </div>
-                      	  <div class="grid_2 col_1">
-							<img src="/images/pic2.jpg" class="img-responsive" alt="">
-							<div class="caption1">						
-							</div>
-						   </div>
-						    <div class="grid_2 col_1">
-							<img src="/images/pic9.jpg" class="img-responsive" alt="">
-							<div class="caption1">
-							</div>
-						   </div>
-		               </div> 
-                      <div class="clearfix"> </div>
-                  </div>
-           </div>
-    </div>
+					</div>
+					<form th:action="'/anime/comments/'+ ${anime.anime_id} + '/' +${user.user_id}" method="post">
+						<input type="text" name="comment" placeholder="Введите ваш комментарий" required>
+						<input type="hidden" name="anime_id" th:value="${anime.anime_id}">
+						<input type="hidden" name="user_id" th:value="${user.user_id}">
+						<button type="submit">Отправить комментарий</button>
+					</form>
+					<!-- Inside <div class="single"> -->
+					<div th:if="${not #lists.isEmpty(comments)}">
+						<h3>Комментарии:</h3>
+						<ul class="comment-list">
+							<li th:each="comment : ${comments}">
+								<div class="comment">
+									<strong th:text="${comment.login}"></strong>
+									<p th:text="${comment.commentText}"></p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				<div class="col-md-3">
+					<div class="movie_img"><div class="grid_2">
+						<img src="/images/pic6.jpg" class="img-responsive" alt="">
+						<div class="caption1">
+						</div>
+					</div>
+					</div>
+					<div class="grid_2 col_1">
+						<img src="/images/pic2.jpg" class="img-responsive" alt="">
+						<div class="caption1">
+						</div>
+					</div>
+					<div class="grid_2 col_1">
+						<img src="/images/pic9.jpg" class="img-responsive" alt="">
+						<div class="caption1">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="container"> 
+<div class="container">
 	<footer id="">
 		<div id="footer-widgets" class="gp-footer-larger-first-col">
-		  <div class="gp-container">
-			<div class="footer-widget footer-1">
-			  <div class="wpb_wrapper">
-				<img src="/images/logo.png" alt=""/>
-			  </div> 
-			<br>
-			<p>ваш идеальный партнер для неограниченного потока развлечений! Мы предлагаем огромную библиотеку аниме, доступную для просмотра в любое время и в любом месте.</p>
-		   </div>
-		   <div class="footer_box">
-			<div class="col_1_of_3 span_1_of_3">
-			 <h3>Теги</h3>
-			 <ul class="first">
-			   <li><a href="#">ГГ мужчина</a></li>
-			   <li><a href="#">ГГ женщина</a></li>
-			   <li><a href="#">Дружба</a></li>
-			   <li><a href="#">Магия</a></li>
-			   <li><a href="#">Монстры</a></li>
-			   <li><a href="#">Насилие/Жестокость</a></li>
-			   <li><a href="#">Способности</a></li>
-			   <li><a href="#">Война</a></li>
-			 </ul>
-			 </div>
-			 <div class="col_1_of_3 span_1_of_3">
-			 <h3>Жанры</h3>
-			 <ul class="first">
-			   <li><a href="#">Романтика</a></li>
-			 <li><a href="#">Боевик</a></li>
-			 <li><a href="#">Подседневность</a></li>
-			 <li><a href="#">Фантастика</a></li>
-			 <li><a href="#">Фэнтези</a></li>
-			 <li><a href="#">Будущее</a></li>
-			 <li><a href="#">Приключение</a></li>
-			 <li><a href="#">Ужасы</a></li>
-			 </ul>
-			 </div>
-		   </div>
-		  </div>
+			<div class="gp-container">
+				<div class="footer-widget footer-1">
+					<div class="wpb_wrapper">
+						<img src="/images/logo.png" alt=""/>
+					</div>
+					<br>
+					<p>ваш идеальный партнер для неограниченного потока развлечений! Мы предлагаем огромную библиотеку аниме, доступную для просмотра в любое время и в любом месте.</p>
+				</div>
+				<div class="footer_box">
+					<div class="col_1_of_3 span_1_of_3">
+						<h3>Теги</h3>
+						<ul class="first">
+							<li><a href="#">ГГ мужчина</a></li>
+							<li><a href="#">ГГ женщина</a></li>
+							<li><a href="#">Дружба</a></li>
+							<li><a href="#">Магия</a></li>
+							<li><a href="#">Монстры</a></li>
+							<li><a href="#">Насилие/Жестокость</a></li>
+							<li><a href="#">Способности</a></li>
+							<li><a href="#">Война</a></li>
+						</ul>
+					</div>
+					<div class="col_1_of_3 span_1_of_3">
+						<h3>Жанры</h3>
+						<ul class="first">
+							<li><a href="#">Романтика</a></li>
+							<li><a href="#">Боевик</a></li>
+							<li><a href="#">Подседневность</a></li>
+							<li><a href="#">Фантастика</a></li>
+							<li><a href="#">Фэнтези</a></li>
+							<li><a href="#">Будущее</a></li>
+							<li><a href="#">Приключение</a></li>
+							<li><a href="#">Ужасы</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
-	  </footer>
+	</footer>
 </div>
 </body>
 </html>

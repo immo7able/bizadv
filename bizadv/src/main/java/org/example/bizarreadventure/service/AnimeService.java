@@ -124,7 +124,8 @@ public class AnimeService {
         return animeRepository.existsById(anime_id);
     }
     public Anime getOneAnime(int anime_id){
-        return animeRepository.getReferenceById(anime_id);
+        Optional<Anime> animeOptional = animeRepository.findById(anime_id);
+        return animeOptional.orElse(null);
     }
     public List<Anime> getAnime(){
         return animeRepository.findAll();

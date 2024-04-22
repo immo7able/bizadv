@@ -1,33 +1,41 @@
 package org.example.bizarreadventure.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+
+@Entity
+@Table(name = "animecomment")
 public class Comment {
-    private int comment_id;
-    private int user_id;
-    private int anime_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int animecomment_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @NotNull
     private String comment;
 
-    public int getComment_id() {
-        return comment_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "anime_id")
+    private Anime anime;
+
+    public int getAnimecomment_id() {
+        return animecomment_id;
     }
 
-    public void setComment_id(int comment_id) {
-        this.comment_id = comment_id;
+    public void setAnimecomment_id(int animecomment_id) {
+        this.animecomment_id = animecomment_id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public int getAnime_id() {
-        return anime_id;
-    }
-
-    public void setAnime_id(int anime_id) {
-        this.anime_id = anime_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getComment() {
@@ -36,5 +44,13 @@ public class Comment {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Anime getAnime() {
+        return anime;
+    }
+
+    public void setAnime(Anime anime) {
+        this.anime = anime;
     }
 }

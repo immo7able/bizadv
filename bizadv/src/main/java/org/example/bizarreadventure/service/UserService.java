@@ -72,4 +72,9 @@ public class UserService {
     public void addFavorite(){
 
     }
+
+    public User getUserById(long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("No user found with ID " + userId));
+    }
 }

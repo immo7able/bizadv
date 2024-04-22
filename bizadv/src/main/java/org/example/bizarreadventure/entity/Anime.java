@@ -1,5 +1,6 @@
 package org.example.bizarreadventure.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -101,6 +102,7 @@ public class Anime {
         this.views = views;
     }
 
+    @JsonProperty("animeId")
     public int getAnime_id() {
         return anime_id;
     }
