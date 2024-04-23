@@ -4,11 +4,13 @@ import jakarta.servlet.http.HttpSession;
 import org.example.bizarreadventure.entity.Anime;
 import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.service.AnimeService;
+import org.example.bizarreadventure.service.GenreService;
 import org.example.bizarreadventure.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +23,11 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private GenreService genreService;
+
+
     @Autowired
     private AnimeService animeService;
     @GetMapping("/admin")
@@ -52,6 +59,14 @@ public class AdminController {
             return "admin";
         }
         model.addAttribute("message", "Аниме добавлено");
+        return "admin";
+    }
+
+    @PostMapping("/genre")
+    public String addGenre(@RequestParam String name,
+                           Model model) {
+        genreService.addGenre(name);
+        model.addAttribute("messagegenre", "Жанр добавлен");
         return "admin";
     }
 }

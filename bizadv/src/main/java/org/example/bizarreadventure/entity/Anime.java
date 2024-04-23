@@ -118,4 +118,5 @@ public class Anime {
     public void setOutdate(Date outdate) {
         this.outdate = outdate;
     }
+
 }

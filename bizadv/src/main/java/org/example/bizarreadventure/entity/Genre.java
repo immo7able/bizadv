@@ -1,6 +1,12 @@
 package org.example.bizarreadventure.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "genre")
 public class Genre{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int genre_id;
     private String name;
 
