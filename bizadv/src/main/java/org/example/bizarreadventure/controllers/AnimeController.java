@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class AnimeCntroller {
+public class AnimeController {
     @Autowired
     private AnimeService animeService;
     @Autowired
@@ -67,6 +66,8 @@ public class AnimeCntroller {
             }
             anime = animeService.getOneAnime(id);
             model.addAttribute("anime", anime);
+            List<CommentDTO> comments = commentService.getCommentsByAnimeId(id);
+            model.addAttribute("comments", comments);
         }
         else return "redirect:/index";
         if (errors.isEmpty()) {
