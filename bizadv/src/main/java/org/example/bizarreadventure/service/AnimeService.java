@@ -1,6 +1,7 @@
 package org.example.bizarreadventure.service;
 
 import org.example.bizarreadventure.entity.Anime;
+import org.example.bizarreadventure.entity.AnimeGenreDTO;
 import org.example.bizarreadventure.entity.AnimeSeries;
 import org.example.bizarreadventure.repository.AnimeRepository;
 import org.example.bizarreadventure.repository.AnimeSeriesRepository;
@@ -18,6 +19,8 @@ import java.util.regex.Pattern;
 public class AnimeService {
     @Autowired
     private AnimeRepository animeRepository;
+    @Autowired
+    private AnimeGenreService animeGenreService;
     @Autowired
     private AnimeSeriesRepository animeSeriesRepository;
     @Value("${upload.path}")
@@ -117,6 +120,11 @@ public class AnimeService {
         }
         return errors;
     }
+
+    public List<AnimeGenreDTO> getGenresForAnime(int animeId) {
+        return animeGenreService.getGenresForAnime(animeId);
+    }
+
     private boolean isAllowedCharacters(String input) {
         return ALLOWED_CHARACTERS_PATTERN.matcher(input).matches();
     }

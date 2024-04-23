@@ -1,12 +1,10 @@
 package org.example.bizarreadventure.controllers;
 
 import jakarta.servlet.http.HttpSession;
-import org.example.bizarreadventure.entity.Anime;
-import org.example.bizarreadventure.entity.AnimeSeries;
-import org.example.bizarreadventure.entity.CommentDTO;
-import org.example.bizarreadventure.entity.User;
+import org.example.bizarreadventure.entity.*;
 import org.example.bizarreadventure.service.AnimeService;
 import org.example.bizarreadventure.service.CommentService;
+import org.example.bizarreadventure.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +23,9 @@ import java.util.Map;
 public class AnimeController {
     @Autowired
     private AnimeService animeService;
+
+    @Autowired
+    private GenreService genreService;
     @Autowired
     private CommentService commentService;
     @GetMapping("/anime")
@@ -35,25 +36,40 @@ public class AnimeController {
         return "anime";
     }
     @GetMapping("/anime/{id}")
-    public String getAnimeDetails(@PathVariable(value = "id") int id, Model model, HttpSession httpSession) {
-        Anime anime = new Anime();
+    public String showAnimePage(@PathVariable(value = "id") int animeId, Model model, HttpSession httpSession) {
+        Anime anime = animeService.getOneAnime(animeId);
         List<AnimeSeries> animeSeries = new ArrayList<>();
         User user = (User) httpSession.getAttribute("user");
-        if (animeService.isAnimeExists(id)) {
-            animeSeries = animeService.getAllSeries(id);
+
+        if (animeService.isAnimeExists(animeId)) {
+            animeSeries = animeService.getAllSeries(animeId);
             if (!animeSeries.isEmpty()) {
                 model.addAttribute("animeseries", animeSeries);
             }
-            anime = animeService.getOneAnime(id);
+
             model.addAttribute("anime", anime);
-            model.addAttribute("user", user);
-            List<CommentDTO> comments = commentService.getCommentsByAnimeId(id);
+            if (user != null) {
+                model.addAttribute("user", user);
+            }
+            List<CommentDTO> comments = commentService.getCommentsByAnimeId(animeId);
             model.addAttribute("comments", comments);
+            List<Genre> genres = genreService.getAllGenres();
+            if (genres.isEmpty()) {
+                System.out.println("No genres found");
+            } else {
+                model.addAttribute("genres", genres);
+            }
+            List<AnimeGenreDTO> animeGenres = animeService.getGenresForAnime(animeId);
+            model.addAttribute("animeGenres", animeGenres);
             return "single";
         } else {
             return "redirect:/index";
         }
     }
+
+
+
+
     @PostMapping("/anime/{id}")
     public String addAnimeSeries(@PathVariable(value = "id") int id, @RequestParam int number, @RequestParam MultipartFile video, Model model) throws IOException {
         Map<String, String> errors = animeService.addAnimeSerie(id, number, video);
@@ -66,8 +82,6 @@ public class AnimeController {
             }
             anime = animeService.getOneAnime(id);
             model.addAttribute("anime", anime);
-            List<CommentDTO> comments = commentService.getCommentsByAnimeId(id);
-            model.addAttribute("comments", comments);
         }
         else return "redirect:/index";
         if (errors.isEmpty()) {
@@ -77,4 +91,5 @@ public class AnimeController {
         model.addAttribute("errors", errors);
         return "single";
     }
+
 }
