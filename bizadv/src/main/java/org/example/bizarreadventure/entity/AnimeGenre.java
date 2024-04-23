@@ -3,7 +3,7 @@ package org.example.bizarreadventure.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "anime_genre")
+@Table(name = "animegenre")
 public class AnimeGenre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
