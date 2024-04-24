@@ -1,15 +1,17 @@
 package org.example.bizarreadventure.controllers;
 
-import ch.qos.logback.core.model.Model;
-import org.example.bizarreadventure.entity.Anime;
+import jakarta.servlet.http.HttpSession;
+import org.example.bizarreadventure.entity.*;
 import org.example.bizarreadventure.service.AnimeService;
 import org.example.bizarreadventure.service.AnimeGenreService;
+import org.example.bizarreadventure.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/anime/{id}")
@@ -21,6 +23,7 @@ public class AnimeGenreController {
     @Autowired
     private AnimeService animeService;
 
+
     @PostMapping("/addGenre")
     public String addGenreToAnime(@PathVariable("id") int animeId, @RequestParam int genreId){
         Anime anime = animeService.getOneAnime(animeId);
@@ -31,4 +34,5 @@ public class AnimeGenreController {
             return "redirect:/anime/" + animeId + "?error=invalidGenre";
         }
     }
+
 }

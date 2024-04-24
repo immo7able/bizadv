@@ -23,17 +23,29 @@ import java.util.Map;
 public class AnimeController {
     @Autowired
     private AnimeService animeService;
-
     @Autowired
     private GenreService genreService;
     @Autowired
     private CommentService commentService;
     @GetMapping("/anime")
-    public String getAnimePage(Model model){
+    public String getAnimePage(@RequestParam(required = false) String search, Model model){
         List<Anime> animeList = new ArrayList<>();
-        animeList = animeService.getAnime();
+        if(search!=null&&!search.isEmpty())
+            animeList = animeService.getAnimeByName(search);
+        else
+            animeList=animeService.getAnime();
         model.addAttribute("animeList", animeList);
         return "anime";
+    }
+    @GetMapping("/")
+    public String getMainPage(@RequestParam(required = false) String search, Model model){
+        List<Anime> animeList = new ArrayList<>();
+        if(search!=null&&!search.isEmpty())
+            animeList = animeService.getAnimeByName(search);
+        else
+            animeList=animeService.getAnime();
+        model.addAttribute("animeList", animeList);
+        return "index";
     }
     @GetMapping("/anime/{id}")
     public String showAnimePage(@PathVariable(value = "id") int animeId, Model model, HttpSession httpSession) {
@@ -63,12 +75,9 @@ public class AnimeController {
             model.addAttribute("animeGenres", animeGenres);
             return "single";
         } else {
-            return "redirect:/index";
+            return "redirect:/";
         }
     }
-
-
-
 
     @PostMapping("/anime/{id}")
     public String addAnimeSeries(@PathVariable(value = "id") int id, @RequestParam int number, @RequestParam MultipartFile video, Model model) throws IOException {

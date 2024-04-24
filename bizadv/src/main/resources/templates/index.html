@@ -66,22 +66,14 @@
       	<div class="box_1">
       	 <h1 class="m_2">Featurd Movies</h1>
       	 <div class="search">
-		    <form>
-				<input type="text" value="Search..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+		    <form action="/" method="get">
+				<input type="text" name="search" value="Search..." onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
 				<input type="submit" value="">
 		    </form>
 		</div>
-		<div class="gallery">
-			<a href="single"><img src="images/pic1.jpg" alt="Фото 1"></a>
-			<a href="single"><img src="images/pic2.jpg" alt="Фото 2"></a>
-			<a href="single"><img src="images/pic3.jpg" alt="Фото 3"></a>
-			<a href="single"><img src="images/pic4.jpg" alt="Фото 4"></a>
-			<a href="single"><img src="images/pic5.jpg" alt="Фото 5"></a>
-			<a href="single"><img src="images/pic6.jpg" alt="Фото 6"></a>
-			<a href="single"><img src="images/pic7.jpg" alt="Фото 7"></a>
-			<a href="single"><img src="images/pic8.jpg" alt="Фото 8"></a>
-			<a href="single"><img src="images/pic9.jpg" alt="Фото 9"></a>
-		</div>
+			<div class="gallery">
+				<a th:each="el :${animeList}" th:href="'/anime/'+${el.anime_id}"><img th:src="'/uploads/'+${el.avatar}" th:alt="${el.name}"></a>
+			</div>
 	</div>
 	  </div>
 			<footer th:insert="~{blocks/footer :: footer}">

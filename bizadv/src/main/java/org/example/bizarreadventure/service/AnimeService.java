@@ -141,4 +141,7 @@ public class AnimeService {
     public List<AnimeSeries> getAllSeries(int anime_id){
         return animeSeriesRepository.findAllByAnimeidOrderByNumber(anime_id);
     }
+    public List<Anime> getAnimeByName(String name){
+        return animeRepository.findAllByName(name);
+    }
 }

@@ -10,29 +10,9 @@
             </div>
             <div class="footer_box">
                 <div class="col_1_of_3 span_1_of_3">
-                    <h3>Теги</h3>
-                    <ul class="first">
-                        <li><a href="#">ГГ мужчина</a></li>
-                        <li><a href="#">ГГ женщина</a></li>
-                        <li><a href="#">Дружба</a></li>
-                        <li><a href="#">Магия</a></li>
-                        <li><a href="#">Монстры</a></li>
-                        <li><a href="#">Насилие/Жестокость</a></li>
-                        <li><a href="#">Способности</a></li>
-                        <li><a href="#">Война</a></li>
-                    </ul>
-                </div>
-                <div class="col_1_of_3 span_1_of_3">
                     <h3>Жанры</h3>
                     <ul class="first">
-                        <li><a href="#">Романтика</a></li>
-                        <li><a href="#">Боевик</a></li>
-                        <li><a href="#">Подседневность</a></li>
-                        <li><a href="#">Фантастика</a></li>
-                        <li><a href="#">Фэнтези</a></li>
-                        <li><a href="#">Будущее</a></li>
-                        <li><a href="#">Приключение</a></li>
-                        <li><a href="#">Ужасы</a></li>
+                        <li th:each="el:${genres}"><a th:href="'/genre/'+${el.genre_id}" th:text="${el.name}"></a></li>
                     </ul>
                 </div>
             </div>

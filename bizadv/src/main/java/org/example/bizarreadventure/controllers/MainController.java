@@ -1,25 +1,18 @@
 package org.example.bizarreadventure.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
 public class MainController {
-    @GetMapping("/index")
-    public String getMainPage(){
-        return "index";
-    }
     @GetMapping("/login")
-    public String getLoginPage(){
+    public String getLoginPage(Model model){
         return "login";
     }
     @GetMapping("/register")
-    public String getRegisterPage(){
+    public String getRegisterPage(Model model){
         return "register";
-    }
-    @GetMapping("/single")
-    public String getAnimePage(){
-        return "single";
     }
 }
