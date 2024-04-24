@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface AnimeRepository extends JpaRepository<Anime, Integer> {
     boolean existsByName(String name);
-    @Query(value = "SELECT * FROM anime a WHERE a.name LIKE %:name%", nativeQuery = true)
+    @Query(value = "SELECT * FROM anime a WHERE a.name ILIKE %:name%", nativeQuery = true)
     List<Anime> findAllByName(String name);
 }
