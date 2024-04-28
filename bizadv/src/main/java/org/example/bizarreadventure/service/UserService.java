@@ -2,6 +2,7 @@ package org.example.bizarreadventure.service;
 
 import jakarta.transaction.Transactional;
 import org.example.bizarreadventure.entity.User;
+import org.example.bizarreadventure.entity.UserList;
 import org.example.bizarreadventure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -16,6 +18,7 @@ import java.util.regex.Pattern;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
     private static final String EMAIL_PATTERN = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     private static final Pattern ALLOWED_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z0-9.@_]+$");
 
@@ -68,9 +71,27 @@ public class UserService {
     public User getUser(String login){
         return userRepository.findByLogin(login);
     }
-    @Transactional
-    public void addFavorite(){
 
+    public void updateUserRanking(User user, List<UserList> favorites) {
+        String newRanking = calculateUserRanking(favorites);
+        user.setRanking(newRanking);
+
+        userRepository.save(user);
+    }
+
+    private String calculateUserRanking(List<UserList> favorites) {
+        int numFavorites = favorites.size();
+        if (numFavorites >= 7) {
+            return "Охотник: S ранга";
+        } else if (numFavorites >= 5) {
+            return "Охотник: A ранга";
+        } else if (numFavorites >= 3) {
+            return "Охотник: B ранга";
+        } else if (numFavorites >= 1) {
+            return "Охотник: C ранга";
+        } else {
+            return "Охотник: D ранга";
+        }
     }
 
     public User getUserById(long userId) {

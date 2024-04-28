@@ -3,6 +3,7 @@ package org.example.bizarreadventure.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,7 @@ public class User {
     private String ranking;
     private Date reg_date;
     private String role;
+
 
     public int getUser_id() {
         return user_id;
