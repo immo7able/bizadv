@@ -3,6 +3,7 @@ package org.example.bizarreadventure.controllers;
 import jakarta.servlet.http.HttpSession;
 import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.entity.UserList;
+import org.example.bizarreadventure.entity.UserMessages;
 import org.example.bizarreadventure.repository.UserRepository;
 import org.example.bizarreadventure.service.FavoriteService;
 import org.example.bizarreadventure.service.UserService;
@@ -60,7 +61,9 @@ public class UserController {
         if (user != null) {
             model.addAttribute("user", user);
             List<UserList> favorites = favoriteService.findFavoritesByUserId(user);
+            List<UserMessages> userMessages = userService.findMessagesByUser(user);
             model.addAttribute("favorites", favorites);
+            model.addAttribute("usermessages", userMessages);
             userService.updateUserRanking(user, favorites);
 
             return "profile";

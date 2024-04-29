@@ -128,6 +128,22 @@ public class AnimeController {
         }
         return "redirect:/login";
     }
+    @PostMapping("/anime/subscribe")
+    public String subscribe(@RequestParam("anime_id") int anime_id, @RequestParam("user_id") int user_id, HttpSession session, RedirectAttributes redirectAttributes) {
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            Anime anime = animeService.getOneAnime(anime_id);
+            if (anime != null) {
+                animeService.subscribeToAnime(user, anime);
+                return "redirect:/anime/" + anime_id;
+            } else {
+                redirectAttributes.addFlashAttribute("error", "Аниме с ID " + anime_id + " не найдено.");
+            }
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Для подписки на аниме необходимо войти в систему.");
+        }
+        return "redirect:/login";
+    }
     @PostMapping("/anime/{id}")
     public String addAnimeSeries(@PathVariable(value = "id") int id, @RequestParam int number, @RequestParam MultipartFile video, Model model) throws IOException {
         Map<String, String> errors = animeService.addAnimeSerie(id, number, video);
@@ -143,6 +159,7 @@ public class AnimeController {
         }
         else return "redirect:/index";
         if (errors.isEmpty()) {
+            animeService.notifySubscribers(id);
             model.addAttribute("message", "Серия добавлена");
             return "single";
         }

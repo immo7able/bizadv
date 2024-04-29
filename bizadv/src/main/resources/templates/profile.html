@@ -26,6 +26,14 @@
     </div>
   </section>
   <section class="manga-list">
+    <h2>Уведомления</h2>
+    <ul>
+      <li>
+        <div class="image-container" th:each="usermessage : ${usermessages}">
+          <span th:text="${usermessage.message}"></span>
+        </div>
+      </li>
+    </ul>
     <h2>Избранное</h2>
     <ul>
       <li>

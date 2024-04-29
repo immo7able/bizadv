@@ -1,10 +1,9 @@
 package org.example.bizarreadventure.service;
 
-import org.example.bizarreadventure.entity.Anime;
-import org.example.bizarreadventure.entity.AnimeGenreDTO;
-import org.example.bizarreadventure.entity.AnimeSeries;
+import org.example.bizarreadventure.entity.*;
 import org.example.bizarreadventure.repository.AnimeRepository;
 import org.example.bizarreadventure.repository.AnimeSeriesRepository;
+import org.example.bizarreadventure.repository.SubscribeListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,11 @@ public class AnimeService {
     @Autowired
     private AnimeGenreService animeGenreService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private AnimeSeriesRepository animeSeriesRepository;
+    @Autowired
+    private SubscribeListRepository subscribeListRepository;
     @Value("${upload.path}")
     private String uploadPath;
     private static final Pattern ALLOWED_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z0-9.@_]+$");
@@ -120,7 +123,15 @@ public class AnimeService {
         }
         return errors;
     }
-
+    public void subscribeToAnime(User user, Anime anime){
+        SubscribeList existingSub = subscribeListRepository.findByUserAndAnime(user, anime);
+        if (existingSub == null) {
+            SubscribeList newSubscribeList = new SubscribeList();
+            newSubscribeList.setUser(user);
+            newSubscribeList.setAnime(anime);
+            subscribeListRepository.save(newSubscribeList);
+        }
+    }
     public List<AnimeGenreDTO> getGenresForAnime(int animeId) {
         return animeGenreService.getGenresForAnime(animeId);
     }
@@ -143,5 +154,13 @@ public class AnimeService {
     }
     public List<Anime> getAnimeByName(String name){
         return animeRepository.findAllByName(name);
+    }
+
+    public void notifySubscribers(int id) {
+        Anime anime = getOneAnime(id);
+        ArrayList<SubscribeList> subscribeList = subscribeListRepository.findByAnime(anime);
+        for(SubscribeList el:subscribeList){
+            userService.update(el.getUser(), el.getAnime());
+        }
     }
 }

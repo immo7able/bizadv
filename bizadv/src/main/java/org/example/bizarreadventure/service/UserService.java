@@ -1,8 +1,11 @@
 package org.example.bizarreadventure.service;
 
 import jakarta.transaction.Transactional;
+import org.example.bizarreadventure.entity.Anime;
 import org.example.bizarreadventure.entity.User;
 import org.example.bizarreadventure.entity.UserList;
+import org.example.bizarreadventure.entity.UserMessages;
+import org.example.bizarreadventure.repository.UserMessagesRepository;
 import org.example.bizarreadventure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +21,18 @@ import java.util.regex.Pattern;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserMessagesRepository userMessagesRepository;
 
     private static final String EMAIL_PATTERN = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     private static final Pattern ALLOWED_CHARACTERS_PATTERN = Pattern.compile("^[a-zA-Z0-9.@_]+$");
+
+    public void update(User user, Anime anime) {
+        UserMessages userMessages = new UserMessages();
+        userMessages.setUser(user);
+        userMessages.setMessage("Вышла новая серия в аниме "+anime.getName());
+        userMessagesRepository.save(userMessages);
+    }
 
     public Map<String, String> validateUserData(String login, String email, String password, String confirmPassword) {
         Map<String, String> errors = new HashMap<>();
@@ -97,5 +109,9 @@ public class UserService {
     public User getUserById(long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("No user found with ID " + userId));
+    }
+
+    public List<UserMessages> findMessagesByUser(User user) {
+        return userMessagesRepository.findByUser(user);
     }
 }
